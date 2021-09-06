@@ -43,6 +43,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
+        $this->mapUserRoutes();
+        $this->mapMoviesRoutes();
 
         $this->mapWebRoutes();
 
@@ -62,7 +64,18 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
     }
-
+    protected function mapUserRoutes()
+    {
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/user.php'));
+    }
+    protected function mapMoviesRoutes()
+    {
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/movies.php'));
+    }
     /**
      * Define the "api" routes for the application.
      *

@@ -35,10 +35,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">Login</a>
+                    <a class="nav-link" href="{{route('home')}}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('signup')}}">Register</a>
+                    <a class="nav-link" href="{{route('register')}}">Register</a>
                 </li>
             </ul>
 
@@ -53,11 +53,12 @@
                 <div class="card">
                     <div class="card-header">Login</div>
                     <div class="card-body">
-                        <form action="" method="">
+                        <form action="{{route('test')}}" method="post">
+                            @csrf
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                    <input type="text" id="email_address" class="form-control" name="email" required autofocus>
                                 </div>
                             </div>
 

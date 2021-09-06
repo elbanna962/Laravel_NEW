@@ -35,10 +35,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">Login</a>
+                    <a class="nav-link" href="{{route('home')}}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('signup')}}">Register</a>
+                    <a class="nav-link" href="{{route('register')}}">Register</a>
                 </li>
             </ul>
 
@@ -53,23 +53,34 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form action="" method="">
+                        <form action="{{route('login')}}" method="post">
+                            <input  type="hidden" name="_token" value="{{csrf_token()}}">
+
                         <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">First Name</label>
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right" >First Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                    <input type="text" id="email_address" class="form-control" name="fname"  autofocus>
+                                    @error('fname')
+                                            <small  class="form-text text-danger" >{{$message}}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">Last Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                    <input type="text" id="email_address" class="form-control" name="lname"  autofocus>
+                                    @error('lname')
+                                            <small  class="form-text text-danger" >{{$message}}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                    <input type="text" id="email_address" class="form-control" name="email"  autofocus>
+                                    @error('email')
+                                            <small  class="form-text text-danger" >{{$message}}</small>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -77,6 +88,9 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="password" class="form-control" name="password" required>
+                                    @error('password')
+                                            <small  class="form-text text-danger" >{{$message}}</small>
+                                    @enderror
                                     
                                 </div>
                                 
