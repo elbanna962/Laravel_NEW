@@ -21,10 +21,11 @@ class LoginController extends Controller
         // $p =decrypt($pass);
         // $pas=User::where('password','=',$pass)->get();
         $user = User::select('password')->get();
-        // return $user;
-        if (Hash::check($request->password, $user->password->first())) 
+   echo $user;
+   echo $request->password;
+        if (Hash::check($request->password, $user)) 
         {
-           return $user->password;
+            return "bana says hi";
         }
        
   
