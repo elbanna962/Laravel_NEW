@@ -17,17 +17,13 @@ class LoginController extends Controller
     }
     public function check(Request $request)
     {
-        // $pass=bcrypt($request->password);
-        // $p =decrypt($pass);
-        // $pas=User::where('password','=',$pass)->get();
-        $user = User::select('password')->get();
-   echo $user;
-   echo $request->password;
-        if (Hash::check($request->password, $user)) 
-        {
-            return "bana says hi";
-        }
-       
+        $user = User::where('email', '=', $request->email)->first();
+        if (!$user) {
+            return response()->json(['success'=>false, 'message' => 'Login Fail, please check email id']);
+         } if (!Hash::check($request->password, $user->password)) {
+            return response()->json(['success'=>false, 'message' => 'Login Fail, pls check password']);
+         }
+            return response()->json(['success'=>true,'message'=>'success', 'data' => $user]);
   
 
     }
